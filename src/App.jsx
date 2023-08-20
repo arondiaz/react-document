@@ -5,11 +5,20 @@ import { Counter } from "./components/Counter";
 import { useState } from "react";
 
 function App() {
-  const [sum, setSum] = useState(0);
+  const [count, setCount] = useState(0);
 
-  function sumClick() {
-    setSum(sum + 1);
+  function handleClick() {
+    setCount(count + 1);
   }
+
+  function handleRest() {
+    setCount(count - 1);
+  }
+
+  function handleMult(){
+    setCount(count * 2)
+  }
+
   return (
     <>
       <h1>hola</h1>
@@ -19,8 +28,19 @@ function App() {
 
       <ButtonAlert />
 
-      <Counter sum={sum} onClick={sumClick} />
-      <Counter sum={sum} onClick={sumClick} />
+      <Counter
+        onIncrement={handleClick}
+        onDecrement={handleRest}
+        onMultiply={handleMult}
+        count={count}
+      />
+
+      <Counter
+        onIncrement={handleClick}
+        onDecrement={handleRest}
+        onMultiply={handleMult}
+        count={count}
+      />
     </>
   );
 }
